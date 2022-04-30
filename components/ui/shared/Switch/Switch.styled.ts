@@ -7,6 +7,7 @@ export const CheckBoxWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 24px;
+  cursor: pointer;
 `;
 export const CheckBoxLabel = styled.label<LabelSwitchProps>`
   position: absolute;
@@ -61,6 +62,7 @@ export const CheckBoxLabel = styled.label<LabelSwitchProps>`
   }
 `;
 export const CheckBox = styled.input<SwitchProps>`
+  cursor: pointer;
   opacity: 0;
   z-index: 1;
   border-radius: 15px;
