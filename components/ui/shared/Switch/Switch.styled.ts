@@ -6,7 +6,7 @@ export const CheckBoxWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 24px;
+  height: 30px;
   cursor: pointer;
 `;
 export const CheckBoxLabel = styled.label<LabelSwitchProps>`

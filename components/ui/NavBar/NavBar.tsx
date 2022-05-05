@@ -4,45 +4,47 @@ import React, {
   SetStateAction,
   useEffect,
   useState,
-} from "react";
-import useLocalStorage from "../../../hooks/use-local-storage";
-import { useAppDispatch, useAppSelector } from "../../../redux/hook/hooks";
+} from 'react';
+import useLocalStorage from '../../../hooks/use-local-storage';
+import { useAppDispatch, useAppSelector } from '../../../redux/hook/hooks';
 import {
   setCurrentTheme,
   Theme,
-} from "../../../redux/slices/current-theme/current-theme";
-import { StyledNavBar } from "./navBar.styled";
-import Switch from "../shared/Switch/Switch";
-// import { WiDaySunny } from "react-icons/wi";
-import { BsMoon, BsSun } from "react-icons/bs";
+} from '../../../redux/slices/current-theme/current-theme';
+import {
+  StyledNavBar,
+  StyledRightSideOfNavBar,
+  StyledToggleDrakMode,
+} from './navBar.styled';
+import Switch from '../shared/Switch/Switch';
+import { BsMoon, BsSun } from 'react-icons/bs';
+import { GiEvilTower } from 'react-icons/gi';
+import { BiUserCircle } from 'react-icons/bi';
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
+import { INavBarProps } from './navBar.interface';
 
-interface Props {
-  darkMode: boolean;
-  setDarkMode: Dispatch<SetStateAction<boolean>>;
-}
-
-export const NavBar: FC<Props> = ({ darkMode, setDarkMode }) => {
+export const NavBar: FC<INavBarProps> = ({ darkMode, setDarkMode }) => {
   const dispatch = useAppDispatch();
   const { currentTheme } = useAppSelector(
-    (state) => state.ui.currentThemeReducer
+    (state) => state.ui.currentThemeReducer,
   );
 
   const [isDark, setIsDark] = useState(false);
 
   const [currentThemeInLs, setCurrentThemeInLs] = useLocalStorage(
-    "currentTheme",
-    ""
+    'currentTheme',
+    '',
   );
 
   const handleThemeChange = () => {
     setDarkMode(!darkMode);
-    setCurrentThemeInLs(`${!darkMode ? "dark" : ""}`);
+    setCurrentThemeInLs(`${!darkMode ? 'dark' : ''}`);
     dispatch(setCurrentTheme(darkMode ? Theme.LIGHT : Theme.DARK));
   };
 
   useEffect(() => {
     if (currentThemeInLs) {
-      if (currentThemeInLs === "dark") {
+      if (currentThemeInLs === 'dark') {
         setDarkMode(true);
         dispatch(setCurrentTheme(Theme.DARK));
       } else {
@@ -54,17 +56,29 @@ export const NavBar: FC<Props> = ({ darkMode, setDarkMode }) => {
 
   return (
     <StyledNavBar>
-      <span>Naka</span>
-      <Switch
+      <span>
+        <GiEvilTower />
+        URBano
+      </span>
+      {/* <Switch
         onChange={handleThemeChange}
         checked={darkMode}
-        gradientStart='#f093fb'
-        gradientEnd='#f5576c'
-        backgroundColor='#37373777'>
-        <BsSun color='yellow' />
-        <BsMoon color='aquamarine' />
-      </Switch>
-      <span>Moto</span>
+        gradientStart="#f093fb"
+        gradientEnd="#f5576c"
+        backgroundColor="#37373777">
+        <BsSun color="yellow" />
+        <BsMoon color="aquamarine" />
+      </Switch> */}
+      <StyledRightSideOfNavBar>
+        <BiUserCircle size={32} />
+        <MdOutlineAccountBalanceWallet size={32} />
+        <StyledToggleDrakMode
+          onClick={handleThemeChange}
+          darkMode={darkMode}
+          setDarkMode={setDarkMode}>
+          {darkMode ? <BsSun /> : <BsMoon />}
+        </StyledToggleDrakMode>
+      </StyledRightSideOfNavBar>
     </StyledNavBar>
   );
 };
