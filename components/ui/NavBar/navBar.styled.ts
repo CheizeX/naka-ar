@@ -25,19 +25,25 @@ export const StyledNavBar = styled.nav`
     font-size: ${({ theme }) => theme.fontSize[32]};
     & > svg {
       margin-right: 10px;
-      width: 32px;
+      width: 40px;
       height: 40px;
       fill: ${({ theme }) => theme.Colors.gray[9]};
       animation: changeColor 10s infinite;
       @keyframes changeColor {
         0% {
-          fill: ${({ theme }) => theme.Colors.purple[1]};
+          fill: ${({ theme }) => theme.Colors.purple[3]};
         }
-        50% {
+        20% {
           fill: ${({ theme }) => theme.Colors.orange[5]};
         }
+        50% {
+          fill: ${({ theme }) => theme.Colors.blue[1]};
+        }
+        80% {
+          fill: ${({ theme }) => theme.Colors.green[3]};
+        }
         100% {
-          fill: ${({ theme }) => theme.Colors.blue[2]};
+          fill: ${({ theme }) => theme.Colors.purple[3]};
         }
       }
     }
@@ -51,19 +57,20 @@ export const StyledRightSideOfNavBar = styled.span`
   width: fit-content;
   height: fit-content;
   & > svg {
+    margin: 0 5px;
     cursor: pointer;
   }
 `;
 export const StyledToggleDrakMode = styled.button<INavBarProps>`
-  width: 26px;
-  height: 26px;
+  width: 34px;
+  height: 34px;
   padding: 4px;
   border-radius: 10px;
   border: 3px solid ${({ theme }) => theme.Colors.gray[1]};
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 5px;
+  margin-left: 10px;
   cursor: pointer;
   & > svg {
     & > path {

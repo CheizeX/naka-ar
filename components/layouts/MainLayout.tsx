@@ -24,7 +24,7 @@ export const MainLayout: FC<Props> = ({
         />
         <meta name="description" content={`${title} - URBano Argentina`} />
         <meta name="keywords" content={`${title}, URBano`} />
-        <link rel="icon" href="/favicon.png" />
+        {/* <link rel="icon" href="/favicon.png" /> */}
       </Head>
       <Main darkMode={darkMode} setDarkMode={setDarkMode} />
       {children}

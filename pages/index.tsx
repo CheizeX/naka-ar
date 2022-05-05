@@ -1,18 +1,14 @@
-import type { NextPage } from "next";
-import { MainLayout } from "../components/layouts/MainLayout";
+import type { NextPage } from 'next';
+import { MainLayout } from '../components/layouts/MainLayout';
 // import { Button } from "@nextui-org/react";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from 'react';
 interface Props {
   darkMode: boolean;
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 const Home: NextPage<Props> = ({ darkMode, setDarkMode }) => {
   return (
-    <MainLayout
-      title='Nakamoto AR'
-      darkMode={darkMode}
-      setDarkMode={setDarkMode}
-    />
+    <MainLayout title="URBano" darkMode={darkMode} setDarkMode={setDarkMode} />
   );
 };
 

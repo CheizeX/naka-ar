@@ -70,8 +70,8 @@ export const NavBar: FC<INavBarProps> = ({ darkMode, setDarkMode }) => {
         <BsMoon color="aquamarine" />
       </Switch> */}
       <StyledRightSideOfNavBar>
-        <BiUserCircle size={32} />
-        <MdOutlineAccountBalanceWallet size={32} />
+        <BiUserCircle size={40} />
+        <MdOutlineAccountBalanceWallet size={40} />
         <StyledToggleDrakMode
           onClick={handleThemeChange}
           darkMode={darkMode}
