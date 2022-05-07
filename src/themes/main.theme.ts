@@ -4,6 +4,7 @@ export const mainTheme: DefaultTheme = {
   // font: `'Montserrat', sans-serif`,
   font: '#2A2A2A',
   background: '#fafafa',
+  shadow: '#DCDCDC',
   Colors: {
     gray: {
       1: '#2A2A2A', // TITLES | HEADERS | INPUT LABELS | INPUT TEXT | POPOVER AND MODAL QUESTIONS TEXT | DATES | AGENT NAMES
@@ -80,6 +81,7 @@ export const mainTheme: DefaultTheme = {
 export const darkTheme: DefaultTheme = {
   font: '#fafafa',
   background: '#2A2A2A',
+  shadow: '#454545',
   Colors: {
     gray: {
       1: '#2A2A2A', // TITLES | HEADERS | INPUT LABELS | INPUT TEXT | POPOVER AND MODAL QUESTIONS TEXT | DATES | AGENT NAMES

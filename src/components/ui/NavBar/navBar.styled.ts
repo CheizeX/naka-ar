@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { INavBarProps } from './navBar.interface';
 
 export const StyledNavBar = styled.nav`
+  position: fixed;
   width: 100%;
   padding: 0 10px;
   height: 74px;
