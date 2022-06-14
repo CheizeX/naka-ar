@@ -15,9 +15,15 @@ import { GiEvilTower } from 'react-icons/gi';
 import { BiUserCircle } from 'react-icons/bi';
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md';
 import { INavBarProps } from './navBar.interface';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import Link from 'next/link';
 
 export const NavBar: FC<INavBarProps> = ({ darkMode, setDarkMode }) => {
   const dispatch = useAppDispatch();
+
+  const { data, status } = useSession();
+  console.log('[data]', data);
+  console.log('[status]', status);
 
   const [currentThemeInLs, setCurrentThemeInLs] = useLocalStorage(
     'currentTheme',
@@ -49,8 +55,57 @@ export const NavBar: FC<INavBarProps> = ({ darkMode, setDarkMode }) => {
         URBano
       </span>
       <StyledRightSideOfNavBar>
-        <BiUserCircle size={40} />
-        <MdOutlineAccountBalanceWallet size={40} />
+        {status === 'authenticated' ? (
+          <>
+            <BiUserCircle size={40} />
+            <MdOutlineAccountBalanceWallet size={40} />
+            <Link href="/api/auth/sigout">
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  signOut();
+                }}
+                style={{
+                  border: '2px solid #fff',
+                  padding: '10px',
+                  margin: '5px',
+                  borderRadius: '5px',
+                }}>
+                Sign Out
+              </a>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href="/api/auth/login">
+              <a
+                style={{
+                  border: '2px solid #fff',
+                  padding: '10px',
+                  margin: '5px',
+                  borderRadius: '5px',
+                }}>
+                Login
+              </a>
+            </Link>
+            <Link href="/api/auth/signin">
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn();
+                }}
+                style={{
+                  border: '2px solid #fff',
+                  padding: '10px',
+                  margin: '5px',
+                  borderRadius: '5px',
+                }}>
+                Sign In
+              </a>
+            </Link>
+          </>
+        )}
+
         <StyledToggleDrakMode
           onClick={handleThemeChange}
           darkMode={darkMode}

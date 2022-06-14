@@ -1,6 +1,6 @@
 import { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import Head from 'next/head';
-import { Main } from '../ui';
+import { Main } from '../ui/Main/Main';
 
 interface Props {
   title?: string;
